@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     觉觉
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/gg.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="觉觉" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/bj2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">觉觉</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['难道菜就不能打游戏吗？', '', ''],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  
+  
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content">a vegetable dog</div>
+</div>
+
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-python笔记①"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/25/python%E7%AC%94%E8%AE%B0%E2%91%A0/"
+    >①输入和输出</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/25/python%E7%AC%94%E8%AE%B0%E2%91%A0/" class="article-date">
+  <time datetime="2021-03-25T11:41:08.000Z" itemprop="datePublished">2021-03-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h5 id="一、运行"><a href="#一、运行" class="headerlink" title="一、运行"></a>一、运行</h5><h6 id="1-1-运行-py文件"><a href="#1-1-运行-py文件" class="headerlink" title="1.1 运行.py文件"></a>1.1 运行.py文件</h6><p>Mac和Linux可以直接运行<code>.py</code>文件，方法是在<code>.py</code>文件的第一行加上一句注释。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3  </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后，通过命令给<code>hello.py</code>以执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod a+x hello.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="二、输入和输出"><a href="#二、输入和输出" class="headerlink" title="二、输入和输出"></a>二、输入和输出</h5><h6 id="2-1-输出"><a href="#2-1-输出" class="headerlink" title="2.1 输出"></a>2.1 输出</h6><p>多个字符串直接用逗号隔开。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;Lu is a pink pig.&#x27;</span>, <span class="string">&#x27;Yang is a ecat.&#x27;</span>, <span class="string">&#x27;Li a vegetable dog.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;1 + 1 =&#x27;</span>, <span class="number">1</span> + <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-2-输入"><a href="#2-2-输入" class="headerlink" title="2.2 输入"></a>2.2 输入</h6><p>输入字符串并存放到变量里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&#x27;please enter your friend name:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;hello,&#x27;</span>, name)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="三、数据类型"><a href="#三、数据类型" class="headerlink" title="三、数据类型"></a>三、数据类型</h5><h6 id="3-1-整数"><a href="#3-1-整数" class="headerlink" title="3.1 整数"></a>3.1 整数</h6><p>十六进制用<code>0x</code>前缀和0-9，a-f表示，例如：<code>0xff00</code>，<code>0xa5b4c3d2</code>，等等。</p>
+<p>对于很大的数，例如<code>10000000000</code>，很难数清楚0的个数。Python允许在数字中间以<code>_</code>分隔，因此，写成<code>10_000_000_000</code>和<code>10000000000</code>是完全一样的。十六进制数也可以写成<code>0xa1b2_c3d4</code>。</p>
+<h6 id="3-2-浮点数"><a href="#3-2-浮点数" class="headerlink" title="3.2 浮点数"></a>3.2 浮点数</h6><p>浮点数可以用数学写法，如<code>1.23</code>，<code>3.14</code>，<code>-9.01</code>，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x10<sup>9</sup> 就是<code>1.23e9</code>，或者<code>12.3e8</code>，0.000012可以写成<code>1.2e-5</code>，等等。</p>
+<blockquote>
+<p>整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的，而浮点数运算则可能会有四舍五入的误差。</p>
+</blockquote>
+<p>在Python中，有两种除法，一种除法是<code>/</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.3333333333333335</span></span><br></pre></td></tr></table></figure>
+
+<p><code>/</code>除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
+
+<p>还有一种除法是<code>//</code>，称为地板除，两个整数的除法仍然是整数，即使除不尽：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> // <span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>取余<code>%</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> % <span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>无论整数做<code>//</code>除法还是取余数，结果永远是整数，所以，整数运算结果永远是精确的。</p>
+<h6 id="3-3-字符串"><a href="#3-3-字符串" class="headerlink" title="3.3 字符串"></a>3.3 字符串</h6><p>字符串是以单引号<code>&#39;</code>或双引号<code>&quot;</code>括起来的任意文本，如果<code>&#39;</code>本身也是一个字符，那就可以用<code>&quot;&quot;</code>括起来，比如<code>&quot;I&#39;m OK&quot;</code>包含的字符是<code>I</code>，<code>&#39;</code>，<code>m</code>，空格，<code>O</code>，<code>K</code>这6个字符。如果字符串内部既包含<code>&#39;</code>又包含<code>&quot;</code>，可以用转义字符<code>\</code>来标识，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;I\&#x27;m \&quot;OK\&quot;!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>表示的字符串内容是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I&#39;m &quot;OK&quot;!</span><br></pre></td></tr></table></figure>
+
+<p>转义字符<code>\</code>可以转义很多字符，比如<code>\n</code>表示换行，<code>\t</code>表示制表符，字符<code>\</code>本身也要转义。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> (<span class="string">&#x27;I\&#x27;m ok.&#x27;</span>)</span><br><span class="line">I<span class="string">&#x27;m ok.</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; print (&quot;&#x27;</span>ymm<span class="string">&#x27;yyds! \n 带带我！&quot;)</span></span><br><span class="line"><span class="string">&#x27;</span>ymm<span class="string">&#x27;yyds!</span></span><br><span class="line"><span class="string"> 带带我！</span></span><br></pre></td></tr></table></figure>
+
+<p>Python还允许用<code>r&#39;&#39;</code>表示<code>&#39;&#39;</code>内部的字符串默认不转义。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> (<span class="string">&#x27;\\\n\\&#x27;</span>)</span><br><span class="line">\</span><br><span class="line">\</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> (<span class="string">r&#x27;\\\n\\&#x27;</span>)</span><br><span class="line">\\\n\\</span><br></pre></td></tr></table></figure>
+
+<p>如果字符串内部有很多换行，用<code>\n</code>写在一行里不好阅读，为了简化，Python允许用<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>的格式表示多行内容。在交互式命令行内输入多行内容时，<u>提示符</u>由<code>&gt;&gt;&gt;</code>变为<code>...</code>，提示你可以接着上一行输入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> (<span class="string">&#x27;&#x27;&#x27;yzyyds!</span></span><br><span class="line"><span class="string"><span class="meta">... </span>llyyds!</span></span><br><span class="line"><span class="string"><span class="meta">... </span>我是菜狗！&#x27;&#x27;&#x27;</span>)</span><br><span class="line">yzyyds!</span><br><span class="line">llyyds!</span><br><span class="line">我是菜狗！</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-4-布尔值"><a href="#3-4-布尔值" class="headerlink" title="3.4 布尔值"></a>3.4 布尔值</h6><p>在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（严格区分大小写），也可以通过布尔运算计算出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>true</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">NameError: name <span class="string">&#x27;true&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="literal">True</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> &lt; <span class="number">2</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>布尔值可以用<code>and</code>、<code>or</code>和<code>not</code>运算。</p>
+<p><code>and</code>运算是与运算，只有所有都为<code>True</code>，<code>and</code>运算结果才是<code>True</code>。</p>
+<p><code>or</code>运算是或运算，只要其中有一个为<code>True</code>，<code>or</code>运算结果就是<code>True</code>。</p>
+<p><code>not</code>运算是非运算，它是一个单目运算符，把<code>True</code>变成<code>False</code>，<code>False</code>变成<code>True</code>。</p>
+<p>布尔值经常用在条件判断中，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="built_in">eval</span> (<span class="built_in">input</span> (<span class="string">&#x27;请输入年龄：&#x27;</span>)) <span class="comment">#eval():自动类型转换。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span>:</span><br><span class="line">	<span class="built_in">print</span> (<span class="string">&quot;恭喜你解除了防沉迷！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span> (<span class="string">&quot;you are so young.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">D:\code\python&gt;python test.py</span><br><span class="line">请输入年龄：<span class="number">5</span></span><br><span class="line">you are so young.</span><br><span class="line"></span><br><span class="line">D:\code\python&gt;python test.py</span><br><span class="line">请输入年龄：<span class="number">19</span></span><br><span class="line">恭喜你解除了防沉迷！</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-5-空值"><a href="#3-5-空值" class="headerlink" title="3.5 空值"></a>3.5 空值</h6><p>空值是Python里一个特殊的值，用<code>None</code>表示。<code>None</code>不能理解为<code>0</code>，因为<code>0</code>是有意义的，而<code>None</code>是一个特殊的空值。</p>
+<h5 id="四、变量及常量"><a href="#四、变量及常量" class="headerlink" title="四、变量及常量"></a>四、变量及常量</h5><h6 id="4-1-变量"><a href="#4-1-变量" class="headerlink" title="4.1 变量"></a>4.1 变量</h6><p>变量名必须是大小写英文、数字和<code>_</code>的组合，且不能用数字开头。</p>
+<p>在Python中，<code>=</code>是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量。</p>
+<p>python这种变量本身类型不固定的语言称之为<font color=#FF0000> 动态语言 </font>，与之对应的是<font color=#FF0000>  静态语言 </font>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。</p>
+<p>当我们写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;ABC&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>时，Python解释器干了两件事情：</p>
+<ol>
+<li>在内存中创建了一个<code>&#39;ABC&#39;</code>的字符串；</li>
+<li>在内存中创建了一个名为<code>a</code>的变量，并把它指向<code>&#39;ABC&#39;</code>。</li>
+</ol>
+<p>也可以把一个变量<code>a</code>赋值给另一个变量<code>b</code>，这个操作实际上是把变量<code>b</code>指向变量<code>a</code>所指向的数据。</p>
+<h6 id="4-2-常量"><a href="#4-2-常量" class="headerlink" title="4.2 常量"></a>4.2 常量</h6><p>常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PI &#x3D; 3.14159265359</span><br></pre></td></tr></table></figure>
+
+<p>但事实上<code>PI</code>仍然是一个变量，Python根本没有任何机制保证<code>PI</code>不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法。</p>
+<h5 id="五、字符串和编码"><a href="#五、字符串和编码" class="headerlink" title="五、字符串和编码"></a>五、字符串和编码</h5><h6 id="5-1-字符编码"><a href="#5-1-字符编码" class="headerlink" title="5.1 字符编码"></a>5.1 字符编码</h6><p>最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），如果要表示更大的整数，就必须用更多的字节。比如两个字节可以表示的最大整数是<code>65535</code>。</p>
+<p>最早只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为<font color=#FF0000>  ASCII编码</font>。</p>
+<p>但是要处理中文至少需要两个字节，而且还不能和ASCII编码冲突，所以，中国制定了<code>GB2312</code>编码，用来把中文编进去。日本把日文编到<code>Shift_JIS</code>里，韩国把韩文编到<code>Euc-kr</code>里，各国有各国的标准，于是产生了乱码问题。</p>
+<p><font color=#FF0000>  Unicode字符集</font>把所有语言都统一到一套编码里，以解决乱码问题。</p>
+<p>Unicode最常用的是UCS-16编码，用两个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。现代操作系统和大多数编程语言都直接支持Unicode。</p>
+<p>ASCII编码和Unicode编码的区别：ASCII编码是1个字节，而Unicode编码通常是2个字节。</p>
+<p>如果把ASCII编码的字符用Unicode编码，只需要在其二进制前面补0。</p>
+<p>弊端：用Unicode编码比ASCII编码需要多一倍的存储空间，在存储和传输上就十分不划算。</p>
+<p>所以，又出现了把Unicode编码转化为“可变长编码”的<font color=#FF0000>  UTF-8编码</font>。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">ASCII</th>
+<th align="left">Unicode</th>
+<th align="left">UTF-8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">A</td>
+<td align="left">01000001</td>
+<td align="left">00000000 01000001</td>
+<td align="left">01000001</td>
+</tr>
+<tr>
+<td align="left">中</td>
+<td align="left">x</td>
+<td align="left">01001110 00101101</td>
+<td align="left">11100100 10111000 10101101</td>
+</tr>
+</tbody></table>
+<p>且ASCII编码实际上可以被看成是UTF-8编码的一部分。</p>
+<p>现在计算机系统通用的字符编码工作方式：</p>
+<p>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/923923787018816/0" alt="rw-file-utf-8"></p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/923923759189600/0" alt="web-utf-8"></p>
+<p>所以很多网页的源码上会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的UTF-8编码。</p>
+<h6 id="5-2-python的字符串"><a href="#5-2-python的字符串" class="headerlink" title="5.2 python的字符串"></a>5.2 python的字符串</h6><p>在最新的Python 3版本中，字符串是以Unicode编码的，即Python的字符串支持多语言，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> (<span class="string">&#x27;陆陆 is a pink pig&#x27;</span>)</span><br><span class="line">陆陆 <span class="keyword">is</span> a pink pig</span><br></pre></td></tr></table></figure>
+
+<p>对于单个字符的编码，Python提供了<code>ord()</code>函数获取字符的整数表示，<code>chr()</code>函数把编码转换为对应的字符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;中&#x27;</span>)</span><br><span class="line"><span class="number">20013</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">66</span>)</span><br><span class="line"><span class="string">&#x27;B&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">25991</span>)</span><br><span class="line"><span class="string">&#x27;文&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果知道字符的整数编码，还可以用十六进制这么写<code>str</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;\u4e2d\u6587&#x27;</span></span><br><span class="line"><span class="string">&#x27;中文&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>两种写法完全是等价的。</p>
+<p>由于Python的字符串类型是<code>str</code>，在内存中以Unicode表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把<code>str</code>变为以字节为单位的<code>bytes</code>。</p>
+<p>Python对<code>bytes</code>类型的数据用带<code>b</code>前缀的单引号或双引号表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&#x27;ABC&#x27;</span></span><br><span class="line">y = <span class="string">b&#x27;ABC&#x27;</span></span><br><span class="line"><span class="built_in">print</span> (x)</span><br><span class="line"><span class="built_in">print</span> (y)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ABC</span><br><span class="line">b&#39;ABC&#39;</span><br></pre></td></tr></table></figure>
+
+<p>要注意区分<code>&#39;ABC&#39;</code>和<code>b&#39;ABC&#39;</code>，前者是<code>str</code>，后者虽然内容显示得和前者一样，但<code>bytes</code>的每个字符都只占用一个字节。</p>
+<p>以Unicode表示的<code>str</code>通过<code>encode()</code>方法可以编码为指定的<code>bytes</code>，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;tql&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">b&#x27;tql&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;太强了&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">b&#x27;\xe5\xa4\xaa\xe5\xbc\xba\xe4\xba\x86&#x27;</span> <span class="comment">#在`bytes`中，无法显示为ASCII字符的字节，用`\x##`显示。</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;太强了&#x27;</span>.encode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">UnicodeEncodeError: <span class="string">&#x27;ascii&#x27;</span> codec can<span class="string">&#x27;t encode characters in position 0-2: ordinal not in range(128)</span></span><br></pre></td></tr></table></figure>
+
+<p>纯英文的<code>str</code>可以用<code>ASCII</code>编码为<code>bytes</code>，内容是一样的，含有中文的<code>str</code>可以用<code>UTF-8</code>编码为<code>bytes</code>。含有中文的<code>str</code>无法用<code>ASCII</code>编码，因为中文编码的范围超过了<code>ASCII</code>编码的范围，Python会报错。</p>
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是<code>bytes</code>。要把<code>bytes</code>变为<code>str</code>，就需要用<code>decode()</code>方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b&#x27;tql&#x27;</span>.decode(<span class="string">&#x27;ascii&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;tql&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b&#x27;\xe5\xa4\xaa\xe5\xbc\xba\xe4\xba\x86&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;太强了&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>bytes</code>中包含无法解码的字节，<code>decode()</code>方法会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b&#x27;\xe4\xb8\xad\xff&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  ...</span><br><span class="line">UnicodeDecodeError: <span class="string">&#x27;utf-8&#x27;</span> codec can<span class="string">&#x27;t decode byte 0xff in position 3: invalid start byte</span></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>bytes</code>中只有一小部分无效的字节，可以传入<code>errors=&#39;ignore&#39;</code>忽略错误的字节：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b&#x27;\xe4\xb8\xad\xff&#x27;</span>.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;中&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>要计算<code>str</code>包含多少个字符，可以用<code>len()</code>函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="string">&#x27;ABC&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="string">&#x27;中文&#x27;</span>)</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><code>len()</code>函数计算的是<code>str</code>的字符数，如果换成<code>bytes</code>，<code>len()</code>函数就计算字节数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="string">b&#x27;ABC&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="string">b&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>)</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="string">&#x27;中文&#x27;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>在操作字符串时，我们经常遇到<code>str</code>和<code>bytes</code>的互相转换。为了避免乱码问题，应当始终坚持使用<font color=#FF0000>  UTF-8编码 </font>对<code>str</code>和<code>bytes</code>进行转换。</p>
+<p>当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">	<span class="comment">#告诉Linux/OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">	<span class="comment">#告诉Python解释器，按照UTF-8编码读取源代码，防止源代码中的中文输出乱码。</span></span><br></pre></td></tr></table></figure>
+
+<p>除此之外，必须要确保文本编辑器正在使用UTF-8 without BOM编码。</p>
+<h6 id="5-3-格式化"><a href="#5-3-格式化" class="headerlink" title="5.3 格式化"></a>5.3 格式化</h6><p><code>%</code>运算符：用来格式化字符串。有几个<code>%?</code>占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个<code>%?</code>，括号可以省略。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;%s yyds!&#x27;</span> % <span class="string">&#x27;ll&#x27;</span></span><br><span class="line"><span class="string">&#x27;ll yyds!&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;乌乌，%s 和 %s 是天才吗&#x27;</span> % (<span class="string">&#x27;陆陆&#x27;</span>, <span class="string">&#x27;羊总&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;乌乌，陆陆 和 羊总 是天才吗&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>常见的占位符有：</p>
+<table>
+<thead>
+<tr>
+<th align="left">占位符</th>
+<th align="left">替换内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%d</td>
+<td align="left">整数</td>
+</tr>
+<tr>
+<td align="left">%f</td>
+<td align="left">浮点数</td>
+</tr>
+<tr>
+<td align="left">%s</td>
+<td align="left">字符串</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td align="left">十六进制整数</td>
+</tr>
+</tbody></table>
+<p>其中，格式化整数和浮点数还可以指定是否补0和整数与小数的位数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%d-%04d&#x27;</span> % (<span class="number">3</span>, <span class="number">1</span>))</span><br><span class="line"><span class="number">3</span>-0001</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%2d-%04d&#x27;</span> % (<span class="number">3</span>, <span class="number">1</span>))</span><br><span class="line"> <span class="number">3</span>-0001</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%.2f&#x27;</span> % <span class="number">3.1415926</span>)</span><br><span class="line"><span class="number">3.14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%6.02f&#x27;</span> % <span class="number">3.1415926</span>)</span><br><span class="line">  <span class="number">3.14</span></span><br></pre></td></tr></table></figure>
+
+<p><code>%s</code>会把任何数据类型转换为字符串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Age: %s. Gender: %s&#x27;</span> % (<span class="number">25</span>, <span class="literal">True</span>)</span><br><span class="line"><span class="string">&#x27;Age: 25. Gender: True&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出<code>%</code>需要转义，用<code>%%</code>来表示一个<code>%</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;growth rate: %d %%&#x27;</span> % <span class="number">7</span></span><br><span class="line"><span class="string">&#x27;growth rate: 7 %&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>另一种格式化字符串的方法是使用字符串的<code>format()</code>方法，它会用传入的参数依次替换字符串内的占位符<code>&#123;0&#125;</code>、<code>&#123;1&#125;</code>……，不过这种方式写起来比%要麻烦得多：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;小明&#x27;</span>, <span class="number">17.125</span>)</span><br><span class="line"><span class="string">&#x27;Hello, 小明, 成绩提升了 17.1%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后一种格式化字符串的方法是使用以<code>f</code>开头的字符串，称之为<code>f-string</code>，它和普通字符串不同之处在于，字符串如果包含<code>&#123;xxx&#125;</code>，就会以对应的变量替换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>r = <span class="number">2.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="number">3.14</span> * r ** <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">f&#x27;The area of a circle with radius <span class="subst">&#123;r&#125;</span> is <span class="subst">&#123;s:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line">The area of a circle <span class="keyword">with</span> radius <span class="number">2.5</span> <span class="keyword">is</span> <span class="number">19.62</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，<code>&#123;r&#125;</code>被变量<code>r</code>的值替换，<code>&#123;s:.2f&#125;</code>被变量<code>s</code>的值替换，并且<code>:</code>后面的<code>.2f</code>指定了格式化参数（即保留两位小数），因此，<code>&#123;s:.2f&#125;</code>的替换结果是<code>19.62</code>。</p>
+<h5 id="六、列表和元组"><a href="#六、列表和元组" class="headerlink" title="六、列表和元组"></a>六、列表和元组</h5><h6 id="6-1-list（列表）"><a href="#6-1-list（列表）" class="headerlink" title="6.1 list（列表）"></a>6.1 list（列表）</h6> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python%E5%9F%BA%E7%A1%80/" rel="tag">python基础</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+  </article>
+  
+
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> Shutup.
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/tz.jpg" alt="觉觉"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
