@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    分类 |  觉觉
+    python笔记① |  觉觉
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,8 +44,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-python笔记①"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -55,15 +55,88 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  分类
+  python笔记①
 </h1>
  
 
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2021/03/25/python%E7%AC%94%E8%AE%B0%E2%91%A0/" class="article-date">
+  <time datetime="2021-03-25T11:41:08.000Z" itemprop="datePublished">2021-03-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">136</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h5 id="运行-py文件"><a href="#运行-py文件" class="headerlink" title="运行.py文件"></a>运行.py文件</h5><p>Mac和Linux可以直接运行<code>.py</code>文件，方法是在<code>.py</code>文件的第一行加上一句注释。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3  </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后，通过命令给<code>hello.py</code>以执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod a+x hello.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p>多个字符串直接用逗号隔开。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;Lu is a pink pig.&#x27;</span>, <span class="string">&#x27;Yang is a ecat.&#x27;</span>, <span class="string">&#x27;Li a vegetable dog.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;1 + 1 =&#x27;</span>, <span class="number">1</span> + <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>输入字符串并存放到变量里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&#x27;please enter your friend name:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;hello,&#x27;</span>, name)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
       <!-- reward -->
       
     </div>
@@ -127,7 +200,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/categories/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/03/25/python%E7%AC%94%E8%AE%B0%E2%91%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -185,7 +258,8 @@
 </style>
 
  
-    
+   
+     
 </article>
 
 </section>
@@ -329,6 +403,23 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
