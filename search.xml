@@ -1,8 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python函数</title>
+    <url>/2021/03/27/python%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h5 id="一、调用函数"><a href="#一、调用函数" class="headerlink" title="一、调用函数"></a>一、调用函数</h5><h6 id="1-1内置函数"><a href="#1-1内置函数" class="headerlink" title="1.1内置函数"></a>1.1内置函数</h6><p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数<code>abs</code>，只有一个参数。可以直接从Python的官方网站查看文档：</p>
+<p><a href="http://docs.python.org/3/library/functions.html#abs">http://docs.python.org/3/library/functions.html#abs</a></p>
+<p>也可以在交互式命令行通过<code>help(abs)</code>查看<code>abs</code>函数的帮助信息。</p>
+<p>调用<code>abs</code>函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(<span class="number">100</span>)</span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(-<span class="number">20</span>)</span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(<span class="number">12.34</span>)</span><br><span class="line"><span class="number">12.34</span></span><br></pre></td></tr></table></figure>
+
+<p>调用函数的时候，如果传入的参数数量不对，会报<code>TypeError</code>的错误，并且Python会明确地告诉你：<code>abs()</code>有且仅有1个参数，但你给出了两个。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="built_in">abs</span>() takes exactly one argument (<span class="number">2</span> given)</span><br></pre></td></tr></table></figure>
+
+<p>如果传入的参数数量是对的，但参数类型不能被函数所接受，也会报<code>TypeError</code>的错误，并且给出错误信息：<code>str</code>是错误的参数类型。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">abs</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: bad operand <span class="built_in">type</span> <span class="keyword">for</span> <span class="built_in">abs</span>(): <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>而<code>max</code>函数<code>max()</code>可以接收任意多个参数，并返回最大的那个：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span>(<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, -<span class="number">5</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="1-2-数据类型转换"><a href="#1-2-数据类型转换" class="headerlink" title="1.2 数据类型转换"></a>1.2 数据类型转换</h6><p>Python内置的常用函数还包括数据类型转换函数，比如<code>int()</code>函数可以把其他数据类型转换为整数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line"><span class="number">123</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="number">12.34</span>)</span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">float</span>(<span class="string">&#x27;12.34&#x27;</span>)</span><br><span class="line"><span class="number">12.34</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">1.23</span>)</span><br><span class="line"><span class="string">&#x27;1.23&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">100</span>)</span><br><span class="line"><span class="string">&#x27;100&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="number">1</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“<font color=#FF0000>  别名 </font>”。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="built_in">abs</span> <span class="comment"># 变量a指向abs函数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a(-<span class="number">1</span>) <span class="comment"># 所以也可以通过a调用abs函数</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="二、定义函数"><a href="#二、定义函数" class="headerlink" title="二、定义函数"></a>二、定义函数</h5><h6 id="2-1-自定义函数、"><a href="#2-1-自定义函数、" class="headerlink" title="2.1 自定义函数、"></a>2.1 自定义函数、</h6>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python函数式编程</title>
+    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>目录扫描器v1</title>
+    <url>/2021/03/27/%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%E5%99%A8v1/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>python编写工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python高级特性</title>
+    <url>/2021/03/27/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Discuz! ML RCE漏洞 getshell 复现</title>
+    <url>/2021/03/27/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A0/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>漏洞复现</category>
+      </categories>
+      <tags>
+        <tag>Discuz! ML 漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python模块</title>
+    <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python基础</title>
-    <url>/2021/03/25/python%E7%AC%94%E8%AE%B0%E2%91%A0/</url>
+    <url>/2021/03/25/python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h5 id="一、运行"><a href="#一、运行" class="headerlink" title="一、运行"></a>一、运行</h5><p>Mac和Linux可以直接运行<code>.py</code>文件，方法是在<code>.py</code>文件的第一行加上一句注释。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3  </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;hello world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
