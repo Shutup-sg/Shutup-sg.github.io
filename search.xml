@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python函数式编程</title>
+    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python函数</title>
     <url>/2021/03/27/python%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h5 id="一、调用函数"><a href="#一、调用函数" class="headerlink" title="一、调用函数"></a>一、调用函数</h5><h6 id="1-1内置函数"><a href="#1-1内置函数" class="headerlink" title="1.1内置函数"></a>1.1内置函数</h6><p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数<code>abs</code>，只有一个参数。可以直接从Python的官方网站查看文档：</p>
@@ -101,7 +112,7 @@
 <p>2.当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数。</p>
 </blockquote>
 <p>当不按顺序提供部分默认参数时，需要把参数名写上。</p>
-<p><font color=#FF0000>  定义默认参数要牢记一点：默认参数必须指向不变对象！ </font>   </p>
+<p><font color=#FF0000>  定义默认参数要牢记一点：默认参数必须指向不变对象！ </font>   </p>
 <p>错误示范：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_end</span>(<span class="params">L=[]</span>):</span></span><br><span class="line">    L.append(<span class="string">&#x27;END&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> L</span><br></pre></td></tr></table></figure>
 
@@ -110,18 +121,64 @@
 
 
 
+<h6 id="3-3-可变参数"><a href="#3-3-可变参数" class="headerlink" title="3.3 可变参数"></a>3.3 可变参数</h6><p>即传入的参数是可变的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span> (<span class="params">*number</span>):</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</span><br><span class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span> + n * n</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span></span><br></pre></td></tr></table></figure>
+
+<p>定义可变参数和定义一个list或tuple参数相比，仅仅在参数前面加了一个<code>*</code>号。在函数内部，参数<code>numbers</code>接收到的是一个tuple，因此，函数代码完全不变。但是，调用该函数时，可以传入任意个参数，包括0个参数。</p>
+<p>如果已经有一个list或者tuple，要调用一个可变参数，可以在list或tuple前面加一个<code>*</code>号，把list或tuple的所有元素作为可变参数传进去。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>calc(*nums)</span><br><span class="line"><span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="3-4-关键字参数"><a href="#3-4-关键字参数" class="headerlink" title="3.4 关键字参数"></a>3.4 关键字参数</h6><p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, **kw</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;name:&#x27;</span>, name, <span class="string">&#x27;age:&#x27;</span>, age, <span class="string">&#x27;other:&#x27;</span>, kw)</span><br></pre></td></tr></table></figure>
+
+<p>函数<code>person</code>除了必选参数<code>name</code>和<code>age</code>外，还接受关键字参数<code>kw</code>。在调用该函数时，可以只传入必选参数，也可以传入任意个数的关键字参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Michael&#x27;</span>, <span class="number">30</span>)</span><br><span class="line">name: Michael age: <span class="number">30</span> other: &#123;&#125;</span><br><span class="line">            </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Bob&#x27;</span>, <span class="number">35</span>, city=<span class="string">&#x27;Beijing&#x27;</span>)</span><br><span class="line">name: Bob age: <span class="number">35</span> other: &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;Beijing&#x27;</span>&#125;</span><br><span class="line">            </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Adam&#x27;</span>, <span class="number">45</span>, gender=<span class="string">&#x27;M&#x27;</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span><br><span class="line">name: Adam age: <span class="number">45</span> other: &#123;<span class="string">&#x27;gender&#x27;</span>: <span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;job&#x27;</span>: <span class="string">&#x27;Engineer&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以先组装出一个dict，然后，把该dict转换为关键字参数传进去。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>extra = &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;job&#x27;</span>: <span class="string">&#x27;Engineer&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Jack&#x27;</span>, <span class="number">24</span>, **extra)</span><br><span class="line">name: Jack age: <span class="number">24</span> other: &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;job&#x27;</span>: <span class="string">&#x27;Engineer&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>**extra</code>表示把<code>extra</code>这个dict的所有key-value用关键字参数传入到函数的<code>**kw</code>参数，<code>kw</code>将获得一个dict，注意<code>kw</code>获得的dict是<code>extra</code>的一份拷贝，对<code>kw</code>的改动不会影响到函数外的<code>extra</code>。</p>
+<h6 id="3-5-命名关键字参数"><a href="#3-5-命名关键字参数" class="headerlink" title="3.5 命名关键字参数"></a>3.5 命名关键字参数</h6><p>在函数内部通过<code>kw</code>检查传入了哪些参数，例如检查<code>person()</code>函数中是否有<code>city</code>和<code>job</code>参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, **kw</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;city&#x27;</span> <span class="keyword">in</span> kw:</span><br><span class="line">        <span class="comment"># 有city参数</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;job&#x27;</span> <span class="keyword">in</span> kw:</span><br><span class="line">        <span class="comment"># 有job参数</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;name:&#x27;</span>, name, <span class="string">&#x27;age:&#x27;</span>, age, <span class="string">&#x27;other:&#x27;</span>, kw)</span><br></pre></td></tr></table></figure>
+
+<p>但是调用者仍可以传入不受限制的关键字参数。如果要限制关键字参数的名字，就可以用命名关键字参数，例如，只接收<code>city</code>和<code>job</code>作为关键字参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, *, city, job</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(name, age, city, job)</span><br></pre></td></tr></table></figure>
+
+<p>和关键字参数<code>**kw</code>不同，命名关键字参数需要一个特殊分隔符<code>*</code>，<code>*</code>后面的参数被视为命名关键字参数。</p>
+<p>调用方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; person(&#39;Jack&#39;, 24, city&#x3D;&#39;Beijing&#39;, job&#x3D;&#39;Engineer&#39;)</span><br><span class="line">Jack 24 Beijing Engineer</span><br></pre></td></tr></table></figure>
+
+<p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符<code>*</code>了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, *args, city, job</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(name, age, args, city, job)</span><br></pre></td></tr></table></figure>
+
+<p>命名关键字参数必须传入参数名，这和位置参数不同。如果没有传入参数名，调用将报错：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Jack&#x27;</span>, <span class="number">24</span>, <span class="string">&#x27;Beijing&#x27;</span>, <span class="string">&#x27;Engineer&#x27;</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: person() takes <span class="number">2</span> positional arguments but <span class="number">4</span> were given</span><br></pre></td></tr></table></figure>
+
+<p>由于调用时缺少参数名<code>city</code>和<code>job</code>，Python解释器把这4个参数均视为位置参数，但<code>person()</code>函数仅接受2个位置参数。</p>
+<p>命名关键字参数可以有缺省值，从而简化调用：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, *, city=<span class="string">&#x27;Beijing&#x27;</span>, job</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(name, age, city, job)</span><br></pre></td></tr></table></figure>
+
+<p>由于命名关键字参数<code>city</code>具有默认值，调用时，可不传入<code>city</code>参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person(<span class="string">&#x27;Jack&#x27;</span>, <span class="number">24</span>, job=<span class="string">&#x27;Engineer&#x27;</span>)</span><br><span class="line">Jack <span class="number">24</span> Beijing Engineer</span><br></pre></td></tr></table></figure>
+
+<p>使用命名关键字参数时，要特别注意，如果没有可变参数，就必须加一个<code>*</code>作为特殊分隔符。如果缺少<code>*</code>，Python解释器将无法识别位置参数和命名关键字参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">person</span>(<span class="params">name, age, city, job</span>):</span></span><br><span class="line">    <span class="comment"># 缺少 *，city和job被视为位置参数</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="3-6-参数组合"><a href="#3-6-参数组合" class="headerlink" title="3.6 参数组合"></a>3.6 参数组合</h6><p>在Python中，必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用。但是参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</p>
+<p>比如定义一个函数，包含上述若干种参数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>(<span class="params">a, b, c=<span class="number">0</span>, *args, **kw</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a =&#x27;</span>, a, <span class="string">&#x27;b =&#x27;</span>, b, <span class="string">&#x27;c =&#x27;</span>, c, <span class="string">&#x27;args =&#x27;</span>, args, <span class="string">&#x27;kw =&#x27;</span>, kw)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span>(<span class="params">a, b, c=<span class="number">0</span>, *, d, **kw</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a =&#x27;</span>, a, <span class="string">&#x27;b =&#x27;</span>, b, <span class="string">&#x27;c =&#x27;</span>, c, <span class="string">&#x27;d =&#x27;</span>, d, <span class="string">&#x27;kw =&#x27;</span>, kw)</span><br></pre></td></tr></table></figure>
+
+<p>在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">0</span> args = () kw = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1(<span class="number">1</span>, <span class="number">2</span>, c=<span class="number">3</span>)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">3</span> args = () kw = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">3</span> args = (<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>) kw = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, x=<span class="number">99</span>)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">3</span> args = (<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>) kw = &#123;<span class="string">&#x27;x&#x27;</span>: <span class="number">99</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f2(<span class="number">1</span>, <span class="number">2</span>, d=<span class="number">99</span>, ext=<span class="literal">None</span>)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">0</span> d = <span class="number">99</span> kw = &#123;<span class="string">&#x27;ext&#x27;</span>: <span class="literal">None</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最神奇的是通过一个tuple和dict，你也可以调用上述函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>args = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>kw = &#123;<span class="string">&#x27;d&#x27;</span>: <span class="number">99</span>, <span class="string">&#x27;x&#x27;</span>: <span class="string">&#x27;#&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1(*args, **kw)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">3</span> args = (<span class="number">4</span>,) kw = &#123;<span class="string">&#x27;d&#x27;</span>: <span class="number">99</span>, <span class="string">&#x27;x&#x27;</span>: <span class="string">&#x27;#&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>args = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>kw = &#123;<span class="string">&#x27;d&#x27;</span>: <span class="number">88</span>, <span class="string">&#x27;x&#x27;</span>: <span class="string">&#x27;#&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f2(*args, **kw)</span><br><span class="line">a = <span class="number">1</span> b = <span class="number">2</span> c = <span class="number">3</span> d = <span class="number">88</span> kw = &#123;<span class="string">&#x27;x&#x27;</span>: <span class="string">&#x27;#&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以，对于任意函数，都可以通过类似<code>func(*args, **kw)</code>的形式调用它，无论它的参数是如何定义的。</p>
+<p><font color=#FF0000>  虽然可以组合多达5种参数，但不要同时使用太多的组合，否则函数接口的可理解性很差。</font></p>
 ]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python函数式编程</title>
-    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -153,7 +210,7 @@
   </entry>
   <entry>
     <title>Shiro RememberMe 1.2.4 反序列化 命令执行漏洞复现</title>
-    <url>/2021/03/27/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A0/</url>
+    <url>/2021/03/27/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A0%20Shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%20RCE/</url>
     <content><![CDATA[<p><strong>Apache Shiro</strong>：Apache开发的Java安全框架。</p>
 <p><strong>反序列化</strong>：从一系列字节中提取数据结构的反向操作。java反序列化即把字节序列恢复为java对象的过程。</p>
 <p><strong>rememberMe</strong>：自动登录。登录时如果勾选”记住我“，后台会给shiro设置rememberMe。</p>
@@ -198,20 +255,34 @@
         <category>漏洞复现</category>
       </categories>
       <tags>
-        <tag>反序列化漏洞，Shiro，命令执行</tag>
+        <tag>RCE</tag>
       </tags>
   </entry>
   <entry>
     <title>Apache Solr远程命令执行漏洞</title>
-    <url>/2021/04/22/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A1/</url>
+    <url>/2021/04/22/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A1%20Solr%20RCE/</url>
     <content><![CDATA[<p><strong>漏洞编号</strong>：CVE-2019-0193</p>
 <p><strong>Solr</strong>：独立的企业级搜索应用服务器。使用java语言开发。</p>
-]]></content>
+<h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><h2 id="Apache-Solr-lt-8-2-0"><a href="#Apache-Solr-lt-8-2-0" class="headerlink" title="Apache Solr &lt; 8.2.0"></a>Apache Solr &lt; 8.2.0</h2><h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5>]]></content>
       <categories>
         <category>漏洞复现</category>
       </categories>
       <tags>
-        <tag>Solr，命令执行</tag>
+        <tag>RCE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞复现③ Webmin RCE</title>
+    <url>/2021/04/25/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A2%20Webmin%20RCE/</url>
+    <content><![CDATA[<p><strong>漏洞编号</strong>：CVE-2019-15107</p>
+<p><strong>Webmin</strong>：基于Web的Unix系统管理工具。</p>
+<h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Webmin&lt;=1.920</p>
+<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5>]]></content>
+      <categories>
+        <category>漏洞复现</category>
+      </categories>
+      <tags>
+        <tag>RCE</tag>
       </tags>
   </entry>
   <entry>
