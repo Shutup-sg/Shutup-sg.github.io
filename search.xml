@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>python函数式编程</title>
-    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python函数</title>
     <url>/2021/03/27/python%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h5 id="一、调用函数"><a href="#一、调用函数" class="headerlink" title="一、调用函数"></a>一、调用函数</h5><h6 id="1-1内置函数"><a href="#1-1内置函数" class="headerlink" title="1.1内置函数"></a>1.1内置函数</h6><p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数<code>abs</code>，只有一个参数。可以直接从Python的官方网站查看文档：</p>
@@ -187,8 +176,8 @@
       </tags>
   </entry>
   <entry>
-    <title>python模块</title>
-    <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
+    <title>python函数式编程</title>
+    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>python</category>
@@ -259,11 +248,38 @@
       </tags>
   </entry>
   <entry>
+    <title>python模块</title>
+    <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Apache Solr远程命令执行漏洞</title>
     <url>/2021/04/22/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A1%20Solr%20RCE/</url>
     <content><![CDATA[<p><strong>漏洞编号</strong>：CVE-2019-0193</p>
 <p><strong>Solr</strong>：独立的企业级搜索应用服务器。使用java语言开发。</p>
-<h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><h2 id="Apache-Solr-lt-8-2-0"><a href="#Apache-Solr-lt-8-2-0" class="headerlink" title="Apache Solr &lt; 8.2.0"></a>Apache Solr &lt; 8.2.0</h2><h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5>]]></content>
+<p><strong>DataImportHandler</strong>：一个可选模块，用于从数据库和其他来源提取数据，其功能是整个DIH配置可以来自请求的<code>dataConfig</code>参数。DIH管理员屏幕的调试模式使用它可以方便地调试/开发DIH配置。</p>
+<p><strong>dataConfig</strong>：数据配置管理</p>
+<p><strong>DIH</strong>：数据库数据导入配置</p>
+<h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Apache Solr &lt; 8.2.0</p>
+<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><p>DIH配置可以包含脚本，因此<code>dataConfig</code>参数存在安全风险。</p>
+<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><ul>
+<li>从Solr的8.2.0版本开始，使用此参数需要将Java系统属性“ enable.dih.dataConfigParam”设置为true。升级到8.2.0或更高版本，默认情况下是安全的。</li>
+<li>或者，编辑solrconfig.xml以配置所有DataImportHandler用法，并在“不变式”部分列出“ dataConfig”参数设置为空字符串。</li>
+<li>确保配置了网络设置，以便只有受信任的流量才能与Solr通信，尤其是与DIH请求处理程序通信。这是所有Solr的最佳做法。</li>
+</ul>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
+<li><a href="https://issues.apache.org/jira/browse/SOLR-13669">https://issues.apache.org/jira/browse/SOLR-13669</a></li>
+<li><a href="https://blog.csdn.net/weixin_43583637/article/details/102875284">https://blog.csdn.net/weixin_43583637/article/details/102875284</a></li>
+<li><a href="https://xz.aliyun.com/t/5941">https://xz.aliyun.com/t/5941</a></li>
+<li><a href="https://xz.aliyun.com/t/5965#toc-6">https://xz.aliyun.com/t/5965#toc-6</a></li>
+</ul>
+]]></content>
       <categories>
         <category>漏洞复现</category>
       </categories>
@@ -272,12 +288,17 @@
       </tags>
   </entry>
   <entry>
-    <title>漏洞复现③ Webmin RCE</title>
+    <title>Webmin远程代码执行漏洞</title>
     <url>/2021/04/25/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A2%20Webmin%20RCE/</url>
     <content><![CDATA[<p><strong>漏洞编号</strong>：CVE-2019-15107</p>
 <p><strong>Webmin</strong>：基于Web的Unix系统管理工具。</p>
 <h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Webmin&lt;=1.920</p>
-<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5>]]></content>
+<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
+<li><a href="https://www.seebug.org/vuldb/ssvid-98060">https://www.seebug.org/vuldb/ssvid-98060</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1553936">https://cloud.tencent.com/developer/article/1553936</a></li>
+<li><a href="https://paper.seebug.org/1019/">https://paper.seebug.org/1019/</a></li>
+</ul>
+]]></content>
       <categories>
         <category>漏洞复现</category>
       </categories>
