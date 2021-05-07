@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python函数式编程</title>
+    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python函数</title>
     <url>/2021/03/27/python%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h5 id="一、调用函数"><a href="#一、调用函数" class="headerlink" title="一、调用函数"></a>一、调用函数</h5><h6 id="1-1内置函数"><a href="#1-1内置函数" class="headerlink" title="1.1内置函数"></a>1.1内置函数</h6><p>要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数<code>abs</code>，只有一个参数。可以直接从Python的官方网站查看文档：</p>
@@ -176,8 +187,8 @@
       </tags>
   </entry>
   <entry>
-    <title>python函数式编程</title>
-    <url>/2021/03/27/python%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</url>
+    <title>python高级特性</title>
+    <url>/2021/03/27/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>python</category>
@@ -189,17 +200,6 @@
   <entry>
     <title>python模块</title>
     <url>/2021/03/27/python%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python高级特性</title>
-    <url>/2021/03/27/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>python</category>
@@ -274,7 +274,8 @@
 <p><strong>Transformer</strong>：转换器。从外部数据源中获取的每一组字段，都可以选择性被转换器转换。此转换过程可以修改字段、创建新字段、或从单行生成多个rows/documents。</p>
 <h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Apache Solr &lt; 8.2.0</p>
 <h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><p>DIH配置可以包含脚本，因此<code>dataConfig</code>参数存在安全风险。</p>
-<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><p>下载：<a href="https://archive.apache.org/dist/lucene/solr/8.1.1/%EF%BC%88%E6%9C%AC%E6%96%87%E4%BD%BF%E7%94%A8kali%E5%AE%89%E8%A3%85%EF%BC%8C%E4%B8%8B%E8%BD%BDtgz%E6%96%87%E4%BB%B6%EF%BC%89">https://archive.apache.org/dist/lucene/solr/8.1.1/（本文使用kali安装，下载tgz文件）</a></p>
+<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><p>下载：<a href="https://archive.apache.org/dist/lucene/solr/8.1.1/">https://archive.apache.org/dist/lucene/solr/8.1.1/</a> </p>
+<p>（本文使用kali安装，下载tgz文件）</p>
 <p>解压：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ar zxvf solr-8.1.1.tgz </span><br></pre></td></tr></table></figure>
 
